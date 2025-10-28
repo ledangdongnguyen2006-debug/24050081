@@ -1,0 +1,643 @@
+/* --------------------- RESET --------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #fff;
+  line-height: 1.7;
+  scroll-behavior: smooth;
+  font-size: 18px; /* 📌 Tăng toàn bộ cỡ chữ của trang */
+}
+
+/* --------------------- CONTAINER --------------------- */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 60px 0;
+}
+
+/* --------------------- HEADER --------------------- */
+.header {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 80px 0;
+  text-align: center;
+  box-shadow: 0 4px 30px rgba(0, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hiệu ứng ánh sáng chuyển động nhẹ trong header */
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(0, 255, 255, 0.05) 0%,
+    rgba(0, 255, 255, 0.15) 50%,
+    rgba(0, 255, 255, 0.05) 100%
+  );
+  animation: lightFlow 15s infinite linear;
+  z-index: 0;
+}
+
+@keyframes lightFlow {
+  0% { transform: translateX(-30%); }
+  100% { transform: translateX(30%); }
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.intro h1 {
+  font-size: 3.5rem;
+  color: #00ffff;
+  text-shadow: 0 0 25px #00ffff;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #00ffff; }
+  to { text-shadow: 0 0 30px #00ffff, 0 0 60px #00ffff; }
+}
+
+.intro p {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  opacity: 0.9;
+  color: #fff;
+  font-weight: 500;
+  text-shadow: 0 0 20px #00ffff;
+  animation: floatText 3.5s ease-in-out infinite;
+}
+
+/* Hiệu ứng trôi lên xuống mềm mại */
+@keyframes floatText {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+
+/* Nút tải CV */
+.btn {
+  display: inline-block;
+  padding: 14px 32px;
+  background: #00ffff;
+  color: #000;
+  border-radius: 35px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+  font-size: 1.1rem;
+}
+
+.btn:hover {
+  background: #00b3b3;
+  transform: scale(1.08);
+  box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff;
+}
+
+/* Ảnh cá nhân nguyên bản + hiệu ứng nổi */
+.photo img {
+  width: auto;
+  max-width: 250px;
+  height: auto;                
+  border-radius: 20px;        
+  object-fit: contain;        
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 35px #00ffff;
+  transition: all 0.6s ease;
+  position: relative;
+}
+
+/* Hiệu ứng khi di chuột vào ảnh */
+.photo img:hover {
+  transform: scale(1.08) rotate(-1deg);
+  filter: brightness(1.15);
+  box-shadow: 0 0 50px #00ffff, 0 0 80px #00ffff;
+}
+
+/* Hiệu ứng ánh sáng quét ngang qua ảnh */
+.photo img::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 100%
+  );
+  transition: 0.4s;
+}
+
+.photo img:hover::after {
+  left: 120%;
+  transition: all 0.8s ease;
+}
+
+
+/* --------------------- MENU --------------------- */
+.nav-menu {
+  margin-top: 35px;
+}
+
+.nav-menu a {
+  color: #fff;
+  margin: 0 15px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.2rem;
+  position: relative;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.nav-menu a:hover {
+  background: #00ffff;
+  color: #000;
+  transform: scale(1.25);
+  box-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff;
+  animation: blink 0.8s infinite alternate;
+}
+
+@keyframes blink {
+  0% { box-shadow: 0 0 10px #00ffff; }
+  100% { box-shadow: 0 0 30px #00ffff; }
+}
+
+.photo img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #00ffff;
+  box-shadow: 0 0 40px #00ffff;
+}
+
+/* --------------------- SECTION TITLES --------------------- */
+section h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #00ffff;
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px #00ffff;
+}
+
+/* --------------------- ABOUT --------------------- */
+.about-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.about-text {
+  width: 55%;
+  font-size: 1.4rem;
+}
+
+.about-images img {
+  width: 450px;
+  border-radius: 40px;
+  box-shadow: 0 0 30px #00ffff;
+  transition: transform 0.4s;
+}
+
+.about-images img:hover {
+  transform: scale(1.05);
+}
+
+/* --------------------- SKILLS--------------------- */
+#skills {
+  scroll-margin-top: 100px;
+  padding: 100px 0;
+}
+
+#skills h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #00ffff;
+  margin-bottom: 50px;
+  text-shadow: 0 0 25px #00ffff;
+}
+
+/* Bố cục tổng thể */
+.skills-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Ảnh kỹ năng nằm center phía trên */
+.skill-image {
+  text-align: center;
+  margin-bottom: 30px; 
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+}
+
+.skill-image img {
+  max-width: 450px;
+  height: auto;
+  border-radius: 20px;
+  border: 3px solid #00ffff;
+  box-shadow: 0 0 35px #00ffff;
+  transition: all 0.6s ease;
+  object-fit: contain;
+}
+
+/* Hiệu ứng ảnh khi hover */
+.skill-image img:hover {
+  transform: scale(1.05) rotate(-1deg);
+  box-shadow: 0 0 50px #00ffff, 0 0 100px #00ffff;
+  filter: brightness(1.1);
+}
+
+/* Lưới kỹ năng nằm ngang */
+.skill-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 40px; /* khoảng cách giữa các ô kỹ năng */
+  width: 100%;
+  max-width: 1000px;
+}
+
+/* Ô kỹ năng */
+.skill-item {
+  background: rgba(255, 255, 255, 0.08);
+  text-align: center;
+  padding: 35px;
+  border-radius: 15px;
+  transition: 0.3s ease;
+  font-weight: 500;
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  flex: 1 1 220px; /* Giúp các ô nằm ngang đều nhau */
+  min-width: 220px;
+}
+
+.skill-item i {
+  display: block;
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #00ffff;
+  text-shadow: 0 0 15px #00ffff;
+}
+
+/* Hiệu ứng hover cho ô kỹ năng */
+.skill-item:hover {
+  background: #00ffff;
+  color: #000;
+  transform: translateY(-8px);
+  box-shadow: 0 0 25px #00ffff;
+}
+
+/* RESPONSIVE - Mobile */
+@media (max-width: 768px) {
+  .skill-image img {
+    max-width: 250px;
+  }
+
+  .skill-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+
+  .skill-item {
+    font-size: 1.1rem;
+    padding: 25px;
+    width: 90%;
+  }
+
+  .skill-item i {
+    font-size: 2rem;
+  }
+}
+
+
+/* --------------------- PROJECTS --------------------- */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.project-card {
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #00ffff;
+}
+
+.project-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.project-card h3 {
+  color: #00ffff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.project-card p {
+  font-size: 1rem;
+  background: rgba(0,0,0,0.85);
+  padding: 15px;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.project-card:hover p {
+  opacity: 1;
+  max-height: 180px;
+  margin-top: 10px;
+}
+
+/* --------------------- INTERESTS --------------------- */
+.interests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+}
+
+.interest-item {
+  position: relative;
+  background: rgba(255,255,255,0.1);
+  text-align: center;
+  padding: 25px;
+  border-radius: 20px;
+  transition: all 0.4s ease;
+  overflow: hidden;
+}
+
+.interest-item:hover {
+  background: rgba(0,255,255,0.2);
+  box-shadow: 0 0 25px #00ffff;
+  transform: translateY(-5px);
+}
+
+.interest-item i {
+  font-size: 3rem;
+  color: #00ffff;
+  margin-bottom: 10px;
+  display: block;
+  transition: transform 0.4s;
+}
+
+.interest-item:hover i {
+  transform: scale(1.2);
+}
+
+.interest-item h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.interest-item p {
+  font-size: 1rem;
+  color: #fff;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.interest-item:hover p {
+  opacity: 1;
+  max-height: 120px;
+  margin-top: 15px;
+}
+/* --------------------- CONTACT--------------------- */
+#contact {
+  scroll-margin-top: 100px;
+}
+
+#contact h2 {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #00ffff;
+  margin-bottom: 40px;
+  text-shadow: 0 0 25px #00ffff;
+}
+
+.contact-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 25px;
+  padding: 50px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.3);
+  transition: 0.4s;
+}
+
+.contact-layout:hover {
+  box-shadow: 0 0 40px #00ffff;
+}
+
+.contact-info {
+  flex: 1;
+  text-align: left;
+}
+
+.contact-info p {
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #e0e0e0;
+}
+
+.contact-info i {
+  font-size: 2rem;
+  color: #00ffff;
+  transition: 0.3s;
+}
+
+.contact-info i:hover {
+  transform: scale(1.3);
+  text-shadow: 0 0 15px #00ffff;
+}
+
+.contact-info a {
+  color: #00ffff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.contact-info a:hover {
+  color: #fff;
+  text-shadow: 0 0 20px #00ffff;
+}
+
+.social-links {
+  margin-top: 30px;
+}
+
+.social-links a {
+  display: inline-block;
+  color: #00ffff;
+  font-size: 2.2rem;
+  margin-right: 25px;
+  transition: all 0.4s ease;
+  text-shadow: 0 0 15px #00ffff;
+}
+
+.social-links a:hover {
+  color: #fff;
+  transform: scale(1.3);
+  text-shadow: 0 0 30px #00ffff, 0 0 50px #00ffff;
+}
+
+.contact-image {
+  flex: 1;
+  text-align: center;
+}
+
+.contact-image img {
+  width: 330px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 0 35px #00ffff;
+  border: 3px solid #00ffff;
+  transition: transform 0.4s ease;
+}
+
+.contact-image img:hover {
+  transform: scale(1.05);
+}
+
+/* RESPONSIVE CONTACT */
+@media (max-width: 768px) {
+  .contact-layout {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .contact-info p {
+    justify-content: center;
+    font-size: 1.2rem;
+  }
+
+  .contact-info i {
+    font-size: 1.8rem;
+  }
+
+  .social-links a {
+    font-size: 2rem;
+    margin-right: 15px;
+  }
+
+  .contact-image img {
+    width: 250px;
+  }
+}
+
+/* --------------------- FOOTER (CHẠY CHỮ) --------------------- */
+footer {
+  position: relative;
+  overflow: hidden;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.7);
+  text-align: center;
+  padding: 10px 0;
+}
+
+footer p {
+  display: inline-block;
+  white-space: nowrap;
+  color: #00ffff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  animation: scrollText 15s linear infinite;
+  text-shadow: 0 0 20px #00ffff;
+}
+
+@keyframes scrollText {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+
+/* --------------------- RESPONSIVE --------------------- */
+@media (max-width: 768px) {
+  body { font-size: 16px; }
+
+  .header-content,
+  .about-grid,
+  .skills-layout,
+  .contact-layout {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .photo img {
+    width: 170px;
+    height: 170px;
+  }
+
+  section h2 {
+    font-size: 2.2rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+  }
+
+  footer p {
+    font-size: 1rem;
+  }
+}
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 15px #00ffff; }
+  50% { box-shadow: 0 0 40px #00ffff; }
+  100% { box-shadow: 0 0 15px #00ffff; }
+}
+
+.contact-image img {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
